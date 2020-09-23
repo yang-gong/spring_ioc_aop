@@ -1,0 +1,83 @@
+<!-- 
+<beans xmlns="http://www.springframework.org/schema/beans"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop" xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+  注意:配置的代码要在beans标签里面写
+ 	  <bean id="user" class="entity.User"></bean>
+ 	<context:component-scan base-package="entity,service,dao"></context:component-scan>
+ 	 <bean id="user1" class="entity.UserFactory" factory-method="getUser1"></bean>
+ 	  <bean id="userdao" class="dao.UserDao"></bean>
+ 	<bean id="servicedao" class="service.UserService">
+ 		<property name="userdao" ref="userdao"></property></bean>
+ 		<bean  id="book" class="dao.Book"></bean>
+        <bean  id="myBook" class="dao.MyBook"></bean>
+        <aop:config>
+        配置切入点
+		<aop:pointcut expression="execution(* *.*(..))" id="pc1"/>
+        配置切面 :把增强用到切入点上
+		<aop:aspect ref="myBook">
+			 <aop:before method="before1" pointcut-ref="pc1"/>
+		<aop:after method="after1" pointcut-ref="pc1"/>
+			 <aop:around method="around1" pointcut-ref="pc1"/>
+		</aop:aspect>
+		</aop:config>
+ 		
+ 	 
+</beans>
+ -->
+ 
+ 
+ 
+ <beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!--         注意:配置的代码要在beans标签里面写 -->
+
+<bean id="user" class="entity.User">
+		<!-- name属性的值:User类里的属性名 -->
+		<!-- value属性的值:设置具体的值 -->
+	<!-- 	<property name="username" value="李四"></property>
+		<property name="password" value="3214"></property> -->
+<!-- 注入数组元素的值 -->
+	 	 <property name="arrs">
+			<list>
+				<value>数组元素1</value>
+				<value>数组元素2</value>
+				<value>数组元素3</value>
+			</list>
+		</property>   
+		<!--	注入list集合元素的值 -->
+		<property name="list">
+			<list>
+				<value>list元素1</value>
+				<value>list元素2</value>
+				<value>list元素3</value>
+			</list>
+		</property>  
+		<!-- 注入map集合元素的值 -->
+		<property name="map">
+			<map>
+				<entry key="key1" value="value1"></entry>
+				<entry key="key2" value="value2"></entry>
+				<entry key="key3" value="value3"></entry>
+			</map>		
+		</property> 
+	</bean>
+
+
+</beans>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
